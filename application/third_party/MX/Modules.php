@@ -1,4 +1,5 @@
-<?php (defined('BASEPATH')) OR exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 (defined('EXT')) OR define('EXT', '.php');
 
@@ -45,8 +46,8 @@ spl_autoload_register('Modules::autoload');
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  **/
-class Modules
-{
+class Modules {
+
 	public static $routes, $registry, $locations;
 	
 	/**
@@ -57,15 +58,16 @@ class Modules
 	{	
 		$method = 'index';
 		
-		if(($pos = strrpos($module, '/')) != FALSE) 
+		if (($pos = strrpos($module, '/')) != FALSE) 
 		{
 			$method = substr($module, $pos + 1);		
 			$module = substr($module, 0, $pos);
 		}
 
-		if($class = self::load($module)) 
+		if ($class = self::load($module)) 
 		{	
-			if (method_exists($class, $method))	{
+			if (method_exists($class, $method))
+			{
 				ob_start();
 				$args = func_get_args();
 				$output = call_user_func_array(array($class, $method), array_slice($args, 1));
@@ -92,7 +94,10 @@ class Modules
 			list($class) = CI::$APP->router->locate(explode('/', $module));
 	
 			/* controller cannot be located */
-			if (empty($class)) return;
+			if (empty($class))
+			{
+				return;
+			}
 	
 			/* set the module directory */
 			$path = APPPATH.'controllers/'.CI::$APP->router->directory;
@@ -113,7 +118,10 @@ class Modules
 	public static function autoload($class) 
 	{	
 		/* don't autoload CI_ prefixed classes or those using the config subclass_prefix */
-		if (strstr($class, 'CI_') OR strstr($class, config_item('subclass_prefix'))) return;
+		if (strstr($class, 'CI_') OR strstr($class, config_item('subclass_prefix')))
+		{
+			return;
+		}
 
 		/* autoload Modular Extensions MX core classes */
 		if (strstr($class, 'MX_')) 
@@ -127,14 +135,14 @@ class Modules
 		}
 		
 		/* autoload core classes */
-		if(is_file($location = APPPATH.'core/'.ucfirst($class).EXT)) 
+		if (is_file($location = APPPATH.'core/'.ucfirst($class).EXT)) 
 		{
 			include_once $location;
 			return;
 		}		
 		
 		/* autoload library classes */
-		if(is_file($location = APPPATH.'libraries/'.ucfirst($class).EXT)) 
+		if (is_file($location = APPPATH.'libraries/'.ucfirst($class).EXT)) 
 		{
 			include_once $location;
 			return;
@@ -148,21 +156,24 @@ class Modules
 		$location = $path.$file.EXT;
 		
 		if ($type === 'other') 
-		{			
+		{
 			if (class_exists($file, FALSE))	
 			{
 				log_message('debug', "File already loaded: {$location}");				
 				return $result;
-			}	
+			}
+
 			include_once $location;
-		} 
+		}
 		else 
 		{
 			/* load config or language array */
 			include $location;
 
-			if ( ! isset($$type) OR ! is_array($$type))				
+			if ( ! isset($$type) OR ! is_array($$type))
+			{
 				show_error("{$location} does not contain a valid {$type} array");
+			}
 
 			$result = $$type;
 		}
@@ -189,7 +200,7 @@ class Modules
 		if ( ! empty($segments)) 
 		{
 			$modules[array_shift($segments)] = ltrim(implode('/', $segments).'/','/');
-		}	
+		}
 
 		foreach (Modules::$locations as $location => $offset) 
 		{					
@@ -199,11 +210,19 @@ class Modules
 				
 				if ($base == 'libraries/' OR $base == 'models/')
 				{
-					if(is_file($fullpath.ucfirst($file_ext))) return array($fullpath, ucfirst($file));
+					if (is_file($fullpath.ucfirst($file_ext)))
+					{
+						return array($fullpath, ucfirst($file));
+					}
 				}
 				else
-				/* load non-class files */
-				if (is_file($fullpath.$file_ext)) return array($fullpath, $file);
+				{
+					/* load non-class files */
+					if (is_file($fullpath.$file_ext))
+					{
+						return array($fullpath, $file);
+					}
+				}
 			}
 		}
 		
@@ -222,7 +241,10 @@ class Modules
 			}
 		}
 
-		if ( ! isset(self::$routes[$module])) return;
+		if ( ! isset(self::$routes[$module]))
+		{
+			return;
+		}
 			
 		/* parse module routes */
 		foreach (self::$routes[$module] as $key => $val) 

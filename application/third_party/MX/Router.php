@@ -1,7 +1,8 @@
-<?php (defined('BASEPATH')) OR exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /* load the MX core module class */
-require dirname(__FILE__).'/Modules.php';
+require_once __DIR__.'/Modules.php';
 
 /**
  * Modular Extensions - HMVC
@@ -57,13 +58,13 @@ class MX_Router extends CI_Router
 		
 		$segments = $this->locate($segments);
 
-		if($this->located == -1)
+		if ($this->located === -1)
 		{
 			$this->_set_404override_controller();
 			return;
 		}
 
-		if(empty($segments))
+		if (empty($segments))
 		{
 			$this->_set_default_controller();
 			return;
@@ -100,7 +101,7 @@ class MX_Router extends CI_Router
 
 		parent::_set_default_controller();
 		
-		if(empty($this->class))
+		if (empty($this->class))
 		{
 			$this->_set_404override_controller();
 		}
@@ -131,36 +132,42 @@ class MX_Router extends CI_Router
 				$this->directory = $offset.$module.'/controllers/';
 
 				/* module sub-controller exists? */
-				if($directory)
+				if ($directory)
 				{
 					/* module sub-directory exists? */
-					if(is_dir($source.$directory.'/'))
+					if (is_dir($source.$directory.'/'))
 					{	
 						$source .= $directory.'/';
 						$this->directory .= $directory.'/';
 
 						/* module sub-directory controller exists? */
-						if($controller)
+						if ($controller)
 						{
-							if(is_file($source.ucfirst($controller).$ext))
+							if (is_file($source.ucfirst($controller).$ext))
 							{
 								$this->located = 3;
 								return array_slice($segments, 2);
 							}
-							else $this->located = -1;
+
+							$this->located = -1;
 						}
 					}
 					else
-					if(is_file($source.ucfirst($directory).$ext))
 					{
-						$this->located = 2;
-						return array_slice($segments, 1);
+						if (is_file($source.ucfirst($directory).$ext))
+						{
+							$this->located = 2;
+							return array_slice($segments, 1);
+						}
+						else
+						{
+							$this->located = -1;
+						}
 					}
-					else $this->located = -1;
 				}
 
 				/* module controller exists? */
-				if(is_file($source.ucfirst($module).$ext))
+				if (is_file($source.ucfirst($module).$ext))
 				{
 					$this->located = 1;
 					return $segments;
@@ -168,25 +175,25 @@ class MX_Router extends CI_Router
 			}
 		}
 
-		if( ! empty($this->directory)) return;
+		if ( ! empty($this->directory))
+		{
+			return;
+		}
 
 		/* application sub-directory controller exists? */
-		if($directory)
+		if ($directory)
 		{
-			if(is_file(APPPATH.'controllers/'.$module.'/'.ucfirst($directory).$ext))
+			if (is_file(APPPATH.'controllers/'.$module.'/'.ucfirst($directory).$ext))
 			{
 				$this->directory = $module.'/';
 				return array_slice($segments, 1);
 			}
 
 			/* application sub-sub-directory controller exists? */
-			if($controller)
-			{ 
-				if(is_file(APPPATH.'controllers/'.$module.'/'.$directory.'/'.ucfirst($controller).$ext))
-				{
-					$this->directory = $module.'/'.$directory.'/';
-					return array_slice($segments, 2);
-				}
+			if ($controller && is_file(APPPATH.'controllers/'.$module.'/'.$directory.'/'.ucfirst($controller).$ext))
+			{
+				$this->directory = $module.'/'.$directory.'/';
+				return array_slice($segments, 2);
 			}
 		}
 
@@ -224,9 +231,9 @@ class MX_Router extends CI_Router
 						break;
 					case 2: $_route = ($this->located < 2) ? $module.'/'.$directory : $directory.'/index';
 						break;
-					case 3: $_route = ($this->located == 2) ? $directory.'/'.$class : $class.'/index';
+					case 3: $_route = ($this->located === 2) ? $directory.'/'.$class : $class.'/index';
 						break;
-					case 4: $_route = ($this->located == 3) ? $class.'/'.$method : $method.'/index';
+					case 4: $_route = ($this->located === 3) ? $class.'/'.$method : $method.'/index';
 						break;
 				}
 			}
@@ -236,10 +243,12 @@ class MX_Router extends CI_Router
 	public function set_class($class)
 	{
 		$suffix = $this->config->item('controller_suffix');
+
 		if (strpos($class, $suffix) === FALSE)
 		{
 			$class .= $suffix;
 		}
+
 		parent::set_class($class);
 	}
-}	
+}
