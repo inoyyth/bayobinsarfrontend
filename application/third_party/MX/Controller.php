@@ -55,6 +55,11 @@ class MX_Controller {
 
 		/* autoload module items */
 		$this->load->_autoloader($this->autoload);
+
+		$menu_items = json_decode($this->curl->simple_get($this->config->item('rest_api_inoy') . '/menu'), true);
+		//var_dump($menu_items);die;
+		$this->load->library("multi_menu");
+		$this->multi_menu->set_items($menu_items);
 	}
 
 	public function __get($class)

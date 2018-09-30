@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends MX_Controller {
+class Contact_us extends MX_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -21,13 +21,12 @@ class Welcome extends MX_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this->API="http://localhost/wordpress/index.php";
 	}
 
 	public function index()
 	{
-		$data['post'] = json_decode($this->curl->simple_get($this->API . '/wp-json/wp/v2/posts/'));
-		$data['view'] = 'welcome/main';
+		$data['contact'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=contact-us'),true);
+		$data['view'] = 'contact_us/main';
 		$this->load->view('template/template', $data);
 	}
 }
