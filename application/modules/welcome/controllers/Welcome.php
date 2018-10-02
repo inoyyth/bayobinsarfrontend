@@ -21,12 +21,14 @@ class Welcome extends MX_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this->API="http://localhost/wordpress/index.php";
 	}
 
 	public function index()
 	{
-		$data['post'] = json_decode($this->curl->simple_get($this->API . '/wp-json/wp/v2/posts/'));
+		$data['top_article'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=home-page'),true);
+		$data['service_article'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=my-service'),true);
+		$data['people_says'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts?categories=5'),true);
+		$data['contact'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=contact-us'),true);
 		$data['view'] = 'welcome/main';
 		$this->load->view('template/template', $data);
 	}
