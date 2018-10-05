@@ -25,14 +25,29 @@ class Blog extends MX_Controller {
 
 	public function index()
 	{
-		$data['blog'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts?categories=4'),true);
+		$blog = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/categories/?slug=blog'), true);
+		$data['list_category'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/categories/?parent=' . $blog[0]['id']),true);
+		$data['blog'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts?categories=' . $blog[0]['id']),true);
+		$data['current_category'] = 0;
+		$data['view'] = 'blog/main';
+		$this->load->view('template/template', $data);
+	}
+
+	public function category($slug) {
+		$parent = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/categories/?slug=blog'), true);
+		$blog = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/categories/?slug=' . $slug), true);
+		$data['blog'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts?categories=' . $blog[0]['id']),true);
+		$data['list_category'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/categories/?parent=' . $parent[0]['id']),true);
+		$data['current_category'] = $blog[0]['id'];
 		$data['view'] = 'blog/main';
 		$this->load->view('template/template', $data);
 	}
 
 	public function detail($id) {
-		$data['article'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts/' . $id),true);
-		$data['contact'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=contact-us'),true);
+		//increment posts view
+		$this->curl->simple_get($this->config->item('rest_api_inoy') . '/countview/' . $id);
+		$data['article'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts/' . $id), true);
+		$data['contact'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=contact-us'), true);
 		$data['view'] = 'blog/detail';
 		$this->load->view('template/template', $data);
 	}

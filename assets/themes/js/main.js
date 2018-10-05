@@ -112,30 +112,30 @@
 		wow.init();
 		
 		// Isotop JS //
-		$(window).on('load', function() {
+		// $(window).on('load', function() {
 			
-			if ($.fn.isotope) {
-                $(".isotop-active").isotope({
-                    filter: '*',
-                });
+		// 	if ($.fn.isotope) {
+        //         $(".isotop-active").isotope({
+        //             filter: '*',
+        //         });
 
-					$('.works-menu ul li').on('click', function() {
-                    $(".works-menu ul li").removeClass("active");
-                    $(this).addClass("active");
+		// 			$('.works-menu ul li').on('click', function() {
+        //             $(".works-menu ul li").removeClass("active");
+        //             $(this).addClass("active");
 
-                    var selector = $(this).attr('data-filter');
-                    $(".isotop-active").isotope({
-                        filter: selector,
-                        animationOptions: {
-                            duration: 750,
-                            easing: 'easeOutCirc',
-                            queue: false,
-                        }
-                    });
-                    return false;
-                });
-            }
-		});
+        //             var selector = $(this).attr('data-filter');
+        //             $(".isotop-active").isotope({
+        //                 filter: selector,
+        //                 animationOptions: {
+        //                     duration: 750,
+        //                     easing: 'easeOutCirc',
+        //                     queue: false,
+        //                 }
+        //             });
+        //             return false;
+        //         });
+        //     }
+		// });
 		
 		/*======================================
 			Animate Scroll JS

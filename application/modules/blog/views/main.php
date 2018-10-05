@@ -1,11 +1,28 @@
 <!-- Blog -->
-<section id="blog" class="blog section" style="background: #ffffff;">
+<section id="blog" class="latest-works blog section" style="background: #ffffff;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-4 col-xs-12">
 				<div class="section-title">
 					<h2>Latest <span>News</span></h2>
 				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<!-- Project Nav -->
+				<div class="works-menu">
+					<ul>
+						<li <?php echo ($current_category == 0 ? 'class="active"' : '');?>><a href="<?php echo site_url('blog/');?>"><i class="fa fa-tasks"></i>All</a></li>
+						<?php 
+						if ( count($list_category > 0) ) {
+							foreach ( $list_category as $k => $v ) {
+						?>
+						<li <?php echo ($current_category == $v['id'] ? 'class="active"' : '');?>><a href="<?php echo site_url('blog/' . $v['slug']);?>"><i class="fa fa-tasks"></i><?php echo $v['name'];?></a></li>
+						<?php } } ?>
+					</ul>
+				</div>
+				<!--/ End Project Nav -->
 			</div>
 		</div>
 		<div class="row">
@@ -25,8 +42,8 @@
 						</div>
 						<img src="<?php echo $v['featured_image']['url'];?>" alt="#">
 						<div class="news-view"> 
-							<span><i class="fa fa-comments"></i>25 comments</span>
-							<span><i class="fa fa-eye"></i>10k views</span>
+							<!--<span><i class="fa fa-comments"></i>25 comments</span> -->
+							<span><i class="fa fa-eye"></i><?php echo ((int)$v['post_views'] == 0 ? 1 : (int)$v['post_views']);?> views</span>
 						</div>
 					</div>
 					<div class="news-body" style="text-align: justify;">
