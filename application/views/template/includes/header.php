@@ -21,5 +21,7 @@
         <link rel="stylesheet" href="c<?php echo base_url('assets/themes/ss/normalize.css');?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/themes/style.css');?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/responsive.css');?>">
+        <script src="<?php echo base_url('assets/themes/js/jquery.min.js');?>">  </script>
+        <script src="<?php echo base_url('assets/themes/js/bootstrap.min.js');?>"></script>
     </head>
     <body>

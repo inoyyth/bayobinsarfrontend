@@ -13,7 +13,7 @@
 						if ( count($service) > 0) {
 							foreach ( $service as $k => $v ) {
 					?>
-					<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
+					<div class="col-md-6 col-sm-6 col-xs-12">
 						<!-- single-service -->	
 						<div class="single-service">
 							<i class="fa fa-check"></i>

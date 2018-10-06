@@ -1026,7 +1026,6 @@ a:hover{
 	background: #fff;
 	border: 1px solid #eeeeee;
 	overflow: hidden;
-	margin-top: 30px;
 	position:relative;
 }
 .blog .single-news img{
@@ -1142,6 +1141,70 @@ a:hover{
 }
 .blog .single-news .news-body .btn:hover i{
 	margin-left:5px;
+}
+.blog .works-menu {
+	padding-top: 10px;
+	padding-bottom: 50px;
+	text-align: center;
+}
+.blog .works-menu ul{}
+.blog .works-menu ul li {
+	font-size: 15px;
+	color: #333;
+	display:inline-block;
+	margin-right: 10px;
+	position: relative;
+	padding: 5px 10px;
+	margin-top: 22px;
+	position:relative;
+	cursor:pointer;
+	transition:all 0.2s ease;
+}
+.blog .works-menu ul li:hover,
+.blog .works-menu ul li.active{
+	color:#fff;
+	background:#42bc7f;
+}
+.blog .works-menu ul li i{
+	margin-right:5px;
+	font-size:14px;
+}
+.blog .works-menu ul li::before {
+	position: absolute;
+	content: "";
+	left: 0;
+	top: 0px;
+	height: 1px;
+	width: 100%;
+	background: #42bc7f;
+	opacity:0;
+	visibility:hidden;
+	transition:all 0.4s ease;
+}
+.blog .works-menu ul li.active:before{
+	top: -4px;
+	opacity:1;
+	visibility:visible;
+}
+.blog .works-menu ul li:after{
+	position: absolute;
+	content: "";
+	left: 0;
+	bottom: 0px;
+	height: 1px;
+	width: 100%;
+	background: #42bc7f;
+	opacity:0;
+	visibility:hidden;
+	transition:all 0.4s ease;
+}
+.blog .works-menu ul li.active:after{
+	opacity:1;
+	visibility:visible;
+	bottom: -4px;
+}
+.blog .works-menu ul li:last-child{
+	margin:0;
 }
 /*=========================
 	End Blogs CSS

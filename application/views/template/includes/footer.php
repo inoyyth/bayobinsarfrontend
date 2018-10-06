@@ -31,8 +31,6 @@
 </footer>
 <!--/ End Footer -->
 		
-        <script src="<?php echo base_url('assets/themes/js/jquery.min.js');?>">  </script>
-        <script src="<?php echo base_url('assets/themes/js/bootstrap.min.js');?>"></script>
         <script src="<?php echo base_url('assets/themes/js/jquery.nav.js');?>"></script>
         <script src="<?php echo base_url('assets/themes/js/jquery.slicknav.min.js');?>"></script>
         <script src="<?php echo base_url('assets/themes/js/easing.min.js');?>"></script>

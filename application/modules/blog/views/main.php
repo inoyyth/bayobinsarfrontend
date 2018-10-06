@@ -2,6 +2,21 @@
 <section id="blog" class="latest-works blog section" style="background: #ffffff;">
 	<div class="container">
 		<div class="row">
+			<div class="col-md-4">
+				<div class="well">
+					<h4>Blog Search</h4>
+					<form method="get" action="<?php echo base_url('blog/');?>">
+						<div class="input-group">
+							<input type="text" name="search" value="<?php echo (isset($keyword) ? $keyword : '');?>" class="form-control">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-12 col-sm-4 col-xs-12">
 				<div class="section-title">
 					<h2>Latest <span>News</span></h2>
@@ -13,7 +28,7 @@
 				<!-- Project Nav -->
 				<div class="works-menu">
 					<ul>
-						<li <?php echo ($current_category == 0 ? 'class="active"' : '');?>><a href="<?php echo site_url('blog/');?>"><i class="fa fa-tasks"></i>All</a></li>
+						<li <?php echo ($current_category == 0 ? 'class="active"' : '');?>><a href="<?php echo site_url('blog');?>"><i class="fa fa-tasks"></i>All</a></li>
 						<?php 
 						if ( count($list_category > 0) ) {
 							foreach ( $list_category as $k => $v ) {

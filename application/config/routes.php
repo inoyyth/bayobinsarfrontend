@@ -58,3 +58,4 @@ $route['profile'] = 'profile/index';
 $route['blog'] = 'blog/index';
 $route['blog/([a-z-0-9]+)-([0-9]+)'] = 'blog/detail/$2';
 $route['blog/([a-z-0-9]+)'] = 'blog/category/$1';
+//$route['blog/post-comment'] = 'blog/post_comment';
