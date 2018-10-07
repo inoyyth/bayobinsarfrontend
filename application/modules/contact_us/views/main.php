@@ -25,7 +25,7 @@
 				<div class="form-head">
 					<form id="form-inquiry" class="form" action="contact_us/submit_inquiry">
 						<div class="form-group">
-							<input type="hidden" name="<?=$csrf['name'];?>" id="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+							<input type="hidden" name="<?=$csrf['name'];?>" id="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>"/>
 							<input name="name" id="name-inquiry" type="text" placeholder="enter name">
 						</div>
 						<div class="form-group">

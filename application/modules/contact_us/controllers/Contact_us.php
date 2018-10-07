@@ -26,6 +26,10 @@ class Contact_us extends MX_Controller {
 	public function index()
 	{
 		$data['contact'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=contact-us'),true);
+		$data['csrf'] = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
 		$data['view'] = 'contact_us/main';
 		$this->load->view('template/template', $data);
 	}
@@ -44,14 +48,14 @@ class Contact_us extends MX_Controller {
 
 		if ( $post ) {
 			$response = array(
-							'status'=>200, 
-							'message' => 'Your inquiry is success submited'
-						);
+				'status'=>200, 
+				'message' => 'Your inquiry is success submited'
+			);
 		} else {
 			$response = array(
-							'status'=>400, 
-							'message' => 'Oops sorry something wrong please try again later'
-						);
+				'status'=>400, 
+				'message' => 'Oops sorry something wrong please try again later'
+			);
 		}
 		echo json_encode(array_merge($response, $csrf));
 	}

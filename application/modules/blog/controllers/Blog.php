@@ -84,14 +84,14 @@ class Blog extends MX_Controller {
 		$post = $this->curl->simple_post($this->config->item('rest_api_default') . '/comments', $data);
 		if ( $post ) {
 			$response = array(
-							'status'=>200, 
-							'message' => 'Your Comment is success submited'
-						);
+				'status'=>200, 
+				'message' => 'Your Comment is success submited'
+			);
 		} else {
 			$response = array(
-							'status'=>400, 
-							'message' => 'Oops sorry something wrong please try again later'
-						);
+				'status'=>400, 
+				'message' => 'Oops sorry something wrong please try again later'
+			);
 		}
 		echo json_encode(array_merge($response, $csrf));
 	}
