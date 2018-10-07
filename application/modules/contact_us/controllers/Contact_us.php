@@ -29,4 +29,30 @@ class Contact_us extends MX_Controller {
 		$data['view'] = 'contact_us/main';
 		$this->load->view('template/template', $data);
 	}
+
+	public function submit_inquiry() {
+		if (!$this->input->is_ajax_request()) {
+            exit('No direct script access allowed');
+		}
+
+		$csrf = array(
+			'csrfName' => $this->security->get_csrf_token_name(),
+			'csrfHash' => $this->security->get_csrf_hash()
+		);
+
+		$post = $this->curl->simple_post($this->config->item('rest_api_inoy') . '/inquiry', $data);
+
+		if ( $post ) {
+			$response = array(
+							'status'=>200, 
+							'message' => 'Your inquiry is success submited'
+						);
+		} else {
+			$response = array(
+							'status'=>400, 
+							'message' => 'Oops sorry something wrong please try again later'
+						);
+		}
+		echo json_encode(array_merge($response, $csrf));
+	}
 }
