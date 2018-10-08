@@ -44,6 +44,13 @@ class Contact_us extends MX_Controller {
 			'csrfHash' => $this->security->get_csrf_hash()
 		);
 
+		$data = array(
+			'email' => $this->input->post('email'),
+			'name' => $this->input->post('name'),
+			'message' => $this->input->post('message'),
+			'phone' => $this->input->post('phone')
+		);
+
 		$post = $this->curl->simple_post($this->config->item('rest_api_inoy') . '/inquiry', $data);
 
 		if ( $post ) {
