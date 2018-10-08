@@ -6,8 +6,8 @@
 				<div class="text">
 					<?php echo $top_article[0]['content']['rendered'];?>
 					<div class="button">
-						<a href="#" class="btn primary "><i class="fa fa-briefcase"></i>view work</a>
-						<a href="#" class="btn"><i class="fa fa-phone"></i>Contact me</a>
+						<a href="<?php echo site_url('service');?>" class="btn primary "><i class="fa fa-briefcase"></i>view work</a>
+						<a href="<?php echo site_url('contact-us');?>" class="btn"><i class="fa fa-phone"></i>Contact me</a>
 					</div>
 				</div>
 			</div>
