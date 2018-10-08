@@ -19,8 +19,8 @@
 		
 		<!-- Xman CSS -->
         <link rel="stylesheet" href="c<?php echo base_url('assets/themes/ss/normalize.css');?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/themes/style.css');?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/responsive.css');?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/themes/style.css?'.date('YmdHis'));?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/responsive.css?'.date('YmdHis'));?>">
         <script src="<?php echo base_url('assets/themes/js/jquery.min.js');?>">  </script>
         <script src="<?php echo base_url('assets/themes/js/bootstrap.min.js');?>"></script>
     </head>
