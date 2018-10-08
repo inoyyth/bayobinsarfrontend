@@ -2,25 +2,20 @@
 <section id="blog" class="latest-works blog section" style="background: #ffffff;">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4">
-				<div class="well">
-					<h4>Blog Search</h4>
-					<form method="get" action="<?php echo base_url('blog/');?>">
-						<div class="input-group">
-							<input type="text" name="search" value="<?php echo (isset($keyword) ? $keyword : '');?>" class="form-control">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-							</span>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<div class="row">
 			<div class="col-md-12 col-sm-4 col-xs-12">
 				<div class="section-title">
 					<h2>Latest <span>News</span></h2>
 				</div>
+			</div>
+			<div class="col-md-4 col-xs-12">
+				<form method="get" action="<?php echo base_url('blog/');?>">
+					<div class="input-group">
+						<input type="text" name="search" value="<?php echo (isset($keyword) ? $keyword : '');?>" class="form-control" placeholder="Search articles...">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+						</span>
+					</div>
+				</form>
 			</div>
 		</div>
 		<div class="row">
