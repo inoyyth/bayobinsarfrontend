@@ -2,8 +2,8 @@
 <section id="blog" class="latest-works blog section" style="background: #ffffff;">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12 col-sm-4 col-xs-12">
-				<div class="section-title">
+			<div class="col-md-8 col-xs-12">
+				<div class="section-title" style="text-align: left !important">
 					<h2>Latest <span>News</span></h2>
 				</div>
 			</div>
@@ -58,7 +58,7 @@
 					</div>
 					<div class="news-body" style="text-align: justify;">
 						<h2><a title="<?php echo $v['title']['rendered'];?>" href="<?php echo site_url('blog/' . url_title($v['title']['rendered'], '-', true) . '-' . $v['id']);?>"><?php echo word_limiter($v['title']['rendered'], 5);?></a></h2>
-						<?php echo word_limiter($v['excerpt']['rendered'], 23);?>
+						<?php echo word_limiter($v['excerpt']['rendered'], 21);?>
 						<!--<a href="<?php echo site_url('blog/' . url_title($v['title']['rendered'], '-', true) . '-' . $v['id']);?>" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>-->
 					</div>
 				</div>
