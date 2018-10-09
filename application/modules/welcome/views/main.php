@@ -28,7 +28,10 @@
 				</div>
 				<div class="col-md-8 col-sm-8 col-xs-12">
 					<div class="single-about">
-					<?php echo $service_article[0]['content']['rendered'];?>
+						<?php echo word_limiter($service_article[0]['content']['rendered'], 100);?>
+						<div class="cv">
+							<a href="<?php echo site_url('profile');?>">More detail</a>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-12">

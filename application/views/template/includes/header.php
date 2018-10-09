@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/magnific-popup.css');?>">
 		
 		<!-- Xman CSS -->
-        <link rel="stylesheet" href="c<?php echo base_url('assets/themes/ss/normalize.css');?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/themes/ss/normalize.css');?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/themes/style.css?'.date('YmdHis'));?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/responsive.css?'.date('YmdHis'));?>">
         <script src="<?php echo base_url('assets/themes/js/jquery.min.js');?>">  </script>
