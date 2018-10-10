@@ -27,6 +27,8 @@ class Service extends MX_Controller {
 	{
 		$category = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/categories/?slug=my-service'), true);
 		$data['service'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts?categories=' . $category[0]['id']),true);
+		$data['header_title'] = 'Layanan';
+		$data['header_description'] = 'Layanan pengetahuan tentang gaya hidup, keuangan, motivasi, bisnis properti, publik speaking dan sales & marketing';
 		$data['view'] = 'service/main';
 		$this->load->view('template/template', $data);
 	}

@@ -36,6 +36,9 @@ class Blog extends MX_Controller {
 		}
 		$data['keyword'] = $keyword;
 		$data['current_category'] = 0;
+		$data['header_title'] = 'Artikel';
+		$data['header_description'] = 'Dapatkan article tentang gaya hidup, keuangan, motivasi, bisnis properti, publik speaking dan sales & marketing';
+		$data['view'] = 'profile/main';
 		$data['view'] = 'blog/main';
 		$this->load->view('template/template', $data);
 	}
@@ -46,6 +49,8 @@ class Blog extends MX_Controller {
 		$data['blog'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts?categories=' . $blog[0]['id']),true);
 		$data['list_category'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/categories/?parent=' . $parent[0]['id']),true);
 		$data['current_category'] = $blog[0]['id'];
+		$data['header_title'] = 'Artikel Kategori';
+		$data['header_description'] = 'menyajikan kategori artikel tentang gaya hidup, keuangan, motivasi, bisnis properti, publik speaking dan sales & marketing';
 		$data['view'] = 'blog/main';
 		$this->load->view('template/template', $data);
 	}
@@ -63,6 +68,10 @@ class Blog extends MX_Controller {
 			'name' => $this->security->get_csrf_token_name(),
 			'hash' => $this->security->get_csrf_hash()
 		);
+		$data['header_title'] = strip_tags($data['article']['title']['rendered']);
+		$data['header_description'] = character_limiter(strip_tags($data['article']['content']['rendered']), 160, '');
+		$data['header_image'] = strip_tags($data['article']['featured_image']['url']);
+		$data['view'] = 'profile/main';
 		$data['view'] = 'blog/detail';
 		$this->load->view('template/template', $data);
 	}

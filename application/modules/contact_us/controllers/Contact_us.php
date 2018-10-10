@@ -30,6 +30,8 @@ class Contact_us extends MX_Controller {
 			'name' => $this->security->get_csrf_token_name(),
 			'hash' => $this->security->get_csrf_hash()
 		);
+		$data['header_title'] = 'Kontak Bayo Binsar';
+		$data['header_description'] = 'Hubungi Bayo Binsar untuk konsultasi mengenai gaya hidup, keuangan, motivasi, bisnis properti, publik speaking dan sales & marketing';
 		$data['view'] = 'contact_us/main';
 		$this->load->view('template/template', $data);
 	}
