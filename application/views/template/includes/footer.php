@@ -17,9 +17,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="social" style="margin-bottom: 16px;">
-                        <li><a href="#"><span class="fa fa-facebook"></span></a></li>
-                        <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                        <li><a href="#"><span class="fa fa-instagram"></span></a></li>
+                        <li><a href="<?php echo $this->config->item('sosmed_facebook');?>" target="_blank"><span class="fa fa-facebook"></span></a></li>
+                        <!--<li><a href="#"><span class="fa fa-twitter"></span></a></li>-->
+                        <li><a href="<?php echo $this->config->item('sosmed_instagram');?>" target="_blank"><span class="fa fa-instagram"></span></a></li>
                     </ul>
                 </div>
                 <div class="col-md-12">
