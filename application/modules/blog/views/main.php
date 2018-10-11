@@ -8,7 +8,7 @@
 				</div>
 			</div>
 			<div class="col-md-4 col-xs-12">
-				<form method="get" action="<?php echo base_url('blog/');?>">
+				<form method="get" action="<?php echo base_url('article/');?>">
 					<div class="input-group">
 						<input type="text" name="search" value="<?php echo (isset($keyword) ? $keyword : '');?>" class="form-control" placeholder="Search articles...">
 						<span class="input-group-btn">
@@ -23,12 +23,12 @@
 				<!-- Project Nav -->
 				<div class="works-menu">
 					<ul>
-						<li <?php echo ($current_category == 0 ? 'class="active"' : '');?>><a href="<?php echo site_url('blog');?>"><i class="fa fa-tasks"></i>All</a></li>
+						<li <?php echo ($current_category == 0 ? 'class="active"' : '');?>><a href="<?php echo site_url('article');?>"><i class="fa fa-tasks"></i>All</a></li>
 						<?php 
 						if ( count($list_category > 0) ) {
 							foreach ( $list_category as $k => $v ) {
 						?>
-						<li <?php echo ($current_category == $v['id'] ? 'class="active"' : '');?>><a href="<?php echo site_url('blog/' . $v['slug']);?>"><i class="fa fa-tasks"></i><?php echo $v['name'];?></a></li>
+						<li <?php echo ($current_category == $v['id'] ? 'class="active"' : '');?>><a href="<?php echo site_url('article/' . $v['slug']);?>"><i class="fa fa-tasks"></i><?php echo $v['name'];?></a></li>
 						<?php } } ?>
 					</ul>
 				</div>
@@ -57,9 +57,9 @@
 						</div>
 					</div>
 					<div class="news-body" style="text-align: justify;">
-						<h2><a title="<?php echo $v['title']['rendered'];?>" href="<?php echo site_url('blog/' . url_title($v['title']['rendered'], '-', true) . '-' . $v['id']);?>"><?php echo word_limiter($v['title']['rendered'], 5);?></a></h2>
+						<h2><a title="<?php echo $v['title']['rendered'];?>" href="<?php echo site_url('article/' . url_title($v['title']['rendered'], '-', true) . '-' . $v['id']);?>"><?php echo word_limiter($v['title']['rendered'], 5);?></a></h2>
 						<?php echo word_limiter($v['excerpt']['rendered'], 21);?>
-						<!--<a href="<?php echo site_url('blog/' . url_title($v['title']['rendered'], '-', true) . '-' . $v['id']);?>" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>-->
+						<!--<a href="<?php echo site_url('article/' . url_title($v['title']['rendered'], '-', true) . '-' . $v['id']);?>" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>-->
 					</div>
 				</div>
 			</div>

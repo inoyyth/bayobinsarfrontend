@@ -77,7 +77,7 @@
 		<!-- Blog Search Well -->
 		<div class="well">
 			<h4>Article Search</h4>
-			<form method="get" action="<?php echo base_url('blog/');?>">
+			<form method="get" action="<?php echo base_url('article/');?>">
 				<div class="input-group">
 					<input type="text" name="search" class="form-control">
 					<span class="input-group-btn">
@@ -97,7 +97,7 @@
 							if ( count($list_category) > 0 ) {
 								foreach ($list_category as $k => $v) {
 						?>
-						<li class="col-md-6 odd"><a href="<?php echo site_url('blog/' . $v['slug']);?>"><?php echo $v['name'];?></a></li>
+						<li class="col-md-6 odd"><a href="<?php echo site_url('article/' . $v['slug']);?>"><?php echo $v['name'];?></a></li>
 						<?php } } ?>
 					</ul>
 				</div>
