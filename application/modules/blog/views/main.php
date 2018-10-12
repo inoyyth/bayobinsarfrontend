@@ -1,9 +1,9 @@
 <!-- Blog -->
-<section id="blog" class="latest-works blog section" style="background: #ffffff;">
+<section id="blog" class="blog section" style="background: #ffffff;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-xs-12">
-				<div class="section-title" style="text-align: left !important">
+				<div class="section-title" style="text-align: left !important;">
 					<h2>Latest <span>News</span></h2>
 				</div>
 			</div>
@@ -20,15 +20,15 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
-				<!-- Project Nav -->
 				<div class="works-menu">
 					<ul>
-						<li <?php echo ($current_category == 0 ? 'class="active"' : '');?>><a href="<?php echo site_url('article');?>"><i class="fa fa-tasks"></i>All</a></li>
-						<?php 
+						<li <?php echo ($current_category == 0 ? 'class="active"' : '');?>><a href="<?php echo site_url('article');?>"><i class="fa fa-newspaper-o"></i>All</a></li>
+						<?php
+						$icon = array('usd', 'shopping-bag', 'heart', 'home', 'users', 'line-chart'); 
 						if ( count($list_category > 0) ) {
 							foreach ( $list_category as $k => $v ) {
 						?>
-						<li <?php echo ($current_category == $v['id'] ? 'class="active"' : '');?>><a href="<?php echo site_url('article/' . $v['slug']);?>"><i class="fa fa-tasks"></i><?php echo $v['name'];?></a></li>
+						<li <?php echo ($current_category == $v['id'] ? 'class="active"' : '');?>><a href="<?php echo site_url('article/' . $v['slug']);?>"><i class="fa fa-<?php echo $icon[$k];?>"></i><?php echo $v['name'];?></a></li>
 						<?php } } ?>
 					</ul>
 				</div>
@@ -43,14 +43,14 @@
 			?>
 			<div class="col-md-4 col-sm-12 col-xs-12 wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.4s">
 				<!-- single-news -->
-				<div class="single-news">
+				<div class="single-news blogs-detail">
 					<div class="news-head">
 						<div class="news-date">
 							<span><?php echo date('d', $strtime);?></span> 
 							<span><?php echo date('M', $strtime);?></span> 
 							<span><?php echo date('Y', $strtime);?></span> 
 						</div>
-						<img src="<?php echo $v['featured_image']['url'];?>" alt="#">
+						<img class="img-wrapper" src="<?php echo $v['featured_image']['url'];?>" alt="#">
 						<div class="news-view"> 
 							<!--<span><i class="fa fa-comments"></i>25 comments</span> -->
 							<span><i class="fa fa-eye"></i><?php echo ((int)$v['post_views'] == 0 ? 1 : (int)$v['post_views']);?> views</span>
@@ -58,7 +58,7 @@
 					</div>
 					<div class="news-body" style="text-align: justify;">
 						<h2><a title="<?php echo $v['title']['rendered'];?>" href="<?php echo site_url('article/' . url_title($v['title']['rendered'], '-', true) . '-' . $v['id']);?>"><?php echo word_limiter($v['title']['rendered'], 5);?></a></h2>
-						<?php echo word_limiter($v['excerpt']['rendered'], 21);?>
+						<?php echo character_limiter($v['excerpt']['rendered'], 170);?>
 						<!--<a href="<?php echo site_url('article/' . url_title($v['title']['rendered'], '-', true) . '-' . $v['id']);?>" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>-->
 					</div>
 				</div>
