@@ -24,7 +24,7 @@
         <meta property="og:app_id" content="1463119233924371"  />
 
         <link rel="alternate" hreflang="id" href="https://newlaunch.rumah123.com/en/property/">
-        <link rel="icon" href="img/icon.png">
+        <link rel="icon" href="<?php echo base_url('assets/themes/img/icon.png');?>">
 		<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300i,400,400i,500,600,700,800,900" rel="stylesheet">
 		<link rel="stylesheet" href="<?php echo base_url('assets/themes/css/bootstrap.min.css');?>">
 		<link rel="stylesheet" href="<?php echo base_url('assets/themes/css/slicknav.min.css?'.date('YmdHis'));?>">
