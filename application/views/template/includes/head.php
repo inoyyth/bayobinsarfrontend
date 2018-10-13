@@ -14,12 +14,12 @@ End Social -->
     <div class="header-inner">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-2 col-xs-12">
-                    <!-- <div class="logo">
-                        <a href="index.html"><img src="img/nnn.png" alt="logo.png"></a>
-                    </div> -->
+                <div class="col-md-3 col-sm-4 col-xs-8">
+                    <div class="logo">
+                        <a href="<?php echo base_url();?>">Bayo Binsar</a>
+                    </div>
                 </div>
-                <div class="col-md-9 col-sm-10 col-xs-12">
+                <div class="col-md-9 col-sm-8 col-xs-4">
                     <div class="mobile-menu"></div>
                     <nav class="navbar navbar-default">
                         <div class="collapse navbar-collapse">
