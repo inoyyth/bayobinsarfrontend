@@ -78,6 +78,20 @@ class Contact_us extends MX_Controller {
         $this->email->subject('Terima Kasih Telah Kirim Pesan Ke Bayo Binsar');
         $this->email->message($msg);  
 		if ($this->email->send()) {
+			$this->__sendMailOwn($data);
+		} else {
+			show_error($this->email->print_debugger());
+			exit;
+		}
+	}
+	
+	private function __sendMailOwn($data) {
+        $msg = $this->load->view('contact_us/include/email_own_inquery',$data,true);
+        $this->email->from('info@bayobinsar.com', 'Bayo Binsar Official Website');
+        $this->email->to('info@bayobinsar.com'); 
+        $this->email->subject('Inquery From ' . $data['name']);
+        $this->email->message($msg);  
+		if ($this->email->send()) {
 			return true;
 		} else {
 			show_error($this->email->print_debugger());
