@@ -29,10 +29,15 @@ class Welcome extends MX_Controller {
 		$data['service_article'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=bayos-profile'),true);
 		$data['people_says'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts?categories=5'),true);
 		$data['contact'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=contact-us'),true);
+		$data['csrf'] = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
 		$data['header_title'] = 'Head Of Business Development-Property Practitioners-Motivator Public Speaking';
 		$data['header_description'] = 'Bayo Binsar Head Of Business Development-Property Practitioners-Motivator Public Speaking Muda Indonesia';
 		$data['header_image'] = $data['top_article'][0]['featured_image']['url'];
 		$data['view'] = 'welcome/main';
+		$data['js'] = array('assets/custom_js/contact_us_inquiry.js');
 		$this->load->view('template/template', $data);
 	}
 }

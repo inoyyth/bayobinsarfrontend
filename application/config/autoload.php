@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('session', 'curl');
+$autoload['libraries'] = array('session', 'curl', 'email');
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('form', 'url', 'text', 'date');
+$autoload['helper'] = array('form', 'url', 'text', 'date', 'inoy_html_helper');
 
 /*
 | -------------------------------------------------------------------

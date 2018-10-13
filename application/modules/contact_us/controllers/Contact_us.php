@@ -33,6 +33,7 @@ class Contact_us extends MX_Controller {
 		$data['header_title'] = 'Kontak Bayo Binsar';
 		$data['header_description'] = 'Hubungi Bayo Binsar untuk konsultasi mengenai gaya hidup, keuangan, motivasi, bisnis properti, publik speaking dan sales & marketing';
 		$data['view'] = 'contact_us/main';
+		$data['js'] = array('assets/custom_js/contact_us_inquiry.js');
 		$this->load->view('template/template', $data);
 	}
 
@@ -60,6 +61,7 @@ class Contact_us extends MX_Controller {
 				'status'=>200, 
 				'message' => 'Your inquiry is success submited'
 			);
+			$this->__sendMail($data);
 		} else {
 			$response = array(
 				'status'=>400, 
@@ -68,4 +70,18 @@ class Contact_us extends MX_Controller {
 		}
 		echo json_encode(array_merge($response, $csrf));
 	}
+
+	private function __sendMail($data) {
+        $msg = $this->load->view('contact_us/include/email_inquiry',$data,true);
+        $this->email->from('info@bayobinsar.com', 'Bayo Binsar Official Website');
+        $this->email->to($data['email']); 
+        $this->email->subject('Terima Kasih Telah Kirim Pesan Ke Bayo Binsar');
+        $this->email->message($msg);  
+		if ($this->email->send()) {
+			return true;
+		} else {
+			show_error($this->email->print_debugger());
+			exit;
+		}
+    }
 }

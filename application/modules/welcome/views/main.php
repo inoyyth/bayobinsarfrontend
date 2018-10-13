@@ -109,21 +109,28 @@
 				</div>
 			</div>
 			<div class="col-md-8 col-sm-12 col-xs-12 ">
-				<div class="form-head">
-					<form class="form" action="#">
+				<div class="form">
+					<form id="form-inquiry" class="form" action="contact_us/submit_inquiry">
 						<div class="form-group">
-							<input name="name" type="text" placeholder="enter name">
+							<input type="hidden" name="<?=$csrf['name'];?>" id="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>"/>
+							<input name="name" id="name-inquiry" required="true" type="text" placeholder="enter name">
 						</div>
 						<div class="form-group">
-							<input name="email" type="email" placeholder="enter email">
+							<input name="email" id="email-inquiry" required="true" type="email" placeholder="enter email">
 						</div>
 						<div class="form-group">
-							<textarea name="message" placeholder="enter message"></textarea>
+							<input name="phone" id="phone-inquiry" required="true" type="number" placeholder="enter phone number">
+						</div>
+						<div class="form-group">
+							<textarea name="message" id="message-inquiry" required="true" placeholder="enter message"></textarea>
 						</div>
 						<div class="form-group">
 							<div class="button">
-								<button type="submit" class="btn primary">Submit</button>
+								<button type="submit" id="btn-submit-inquiry" required="true" data-loading-text="Loading..." class="btn primary">Submit</button>
 							</div>
+							<br>
+							<div id="alert-inquiry-success" style="display:none;" class="alert alert-success alert-inquiry" role="alert"></div>
+							<div id="alert-inquiry-failed" style="display:none;" class="alert alert-danger alert-inquiry" role="alert"></div>
 						</div>
 					</form>
 				</div>

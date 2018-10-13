@@ -45,5 +45,6 @@
 		<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyC0RqLa90WDfoJedoE3Z_Gy7a7o8PCL2jw"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/themes/js/gmaps.min.js');?>"></script>
         <script src="<?php echo base_url('assets/themes/js/main.js');?>"></script>
+        <?php echo $this->load->view('template/includes/custom_footer_js');?>
     </body>
 </html>
