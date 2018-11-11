@@ -37,7 +37,7 @@
 				<div class="col-md-4 col-sm-4 col-xs-12">
 					<div class="image">
 						<img src="<?php echo $service_article[0]['featured_image']['url'];?>" alt="#">
-						<a href="<?php echo $service_article[0]['acf']['link_youtube'];?>" class="video video-popup mfp-iframe"><i class="fa fa-play"></i></a>
+						<!-- <a href="<?php echo $service_article[0]['acf']['link_youtube'];?>" class="video video-popup mfp-iframe"><i class="fa fa-play"></i></a> -->
 					</div>
 				</div>
 			</div>
